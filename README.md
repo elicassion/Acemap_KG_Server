@@ -34,7 +34,7 @@ Here we use Maven to install [all artifacts of Jena](http://jena.apache.org/down
 Change directory into your target installation directory.
     cd /your/target/installation/directory
 Clone the Jena project. (Command on the official website has a little mistake.)
-  **git clone** git://git.apache.org/jena.git
+    **git clone** git://git.apache.org/jena.git
 Install
     cd jena
     mvn clean install
