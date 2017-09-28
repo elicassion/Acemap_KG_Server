@@ -10,20 +10,20 @@ Git
 
 ## Setup
 ### JDK 1.8
-#### Install
+#### JDK Install
     sudo add-apt-repository ppa:webupd8team/java
     sudo apt-get update
     sudo apt-get install oracle-java8-installer
 
-#### Check
+#### JDK Check
     java -version
 
 ### Maven
-#### Download
+#### Maven Download
 [Apache Maven Download](http://maven.apache.org/download.cgi) Either tar.gz or zip archive is ok.
-#### Install
+#### Maven Install
 [Apache Maven Install](http://maven.apache.org/install.html)
-#### Check
+#### Maven Check
     mvn -v
 
 ### Git
@@ -34,10 +34,10 @@ Here we use Maven to install [all artifacts of Jena](http://jena.apache.org/down
 
 Change directory into your target installation directory.
 
-    ``cd /your/target/installation/directory``
+    cd /your/target/installation/directory
 Clone the Jena project. (Command on the official website has a little mistake.)
 
-    ``**git clone** git://git.apache.org/jena.git``
+    **git clone** git://git.apache.org/jena.git
 Install
 
     cd jena
