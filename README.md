@@ -31,13 +31,18 @@ Git
 
 ### Jena
 Here we use Maven to install [all artifacts of Jena](http://jena.apache.org/download/maven.html).
+
 Change directory into your target installation directory.
+
     ``cd /your/target/installation/directory``
 Clone the Jena project. (Command on the official website has a little mistake.)
+
     ``**git clone** git://git.apache.org/jena.git``
 Install
-    ``cd jena
-    mvn clean install``
+
+    cd jena
+    mvn clean install
+    
 Then open a pack of chips and wait for the finish of installation. It takes about 50min on my PC. Some tests are performed along with the installation. Wish you guys good luck.
 
 ## The First Hands-on Attempt
