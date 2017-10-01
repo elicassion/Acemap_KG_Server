@@ -8,6 +8,22 @@ Ubuntu 16.04
 JDK 1.8
 Git
 
+## Directory Explanation
+deploy.sh -> script to check the environment, download [Apache-Jena](http://jena.apache.org/) and [Apache-Jena-Fuseki](http://jena.apache.org/documentation/fuseki2/index.html) and unzip them.
+
+./db includes .ttl files, ready for being converted to TDB files.
+We already put an example.ttl in it.
+You can also create ANY directory as your base storing .ttl files on your machine.
+
+build_db.sh -d \[directory of your .ttl files\] -n \[database name\]-> build your TDB from .ttl files in /db.
+-d is your directory containing .ttl files. It will be './db' by default.
+-n is your name for this database. It will be used in SPARQL queries. 'db' by default.
+
+run_service.sh run the Fuseki server on your machine. The root of APIs is http://localhost:3030 by default. 
+Specifically, APIs of your database are http://localhost:3030/\[database name\]/[query/update/data]
+
+All is waiting for use!
+
 ## Setup
 ### JDK 1.8
 #### JDK Install
@@ -18,32 +34,10 @@ Git
 #### JDK Check
     java -version
 
-### Maven
-#### Maven Download
-[Apache Maven Download](http://maven.apache.org/download.cgi) Either tar.gz or zip archive is ok.
-#### Maven Install
-[Apache Maven Install](http://maven.apache.org/install.html)
-#### Maven Check
-    mvn -v
-
-### Git
-    sudo apt-get install git
-
-### Jena
-Here we use Maven to install [all artifacts of Jena](http://jena.apache.org/download/maven.html).
-
-Change directory into your target installation directory.
-
-    cd /your/target/installation/directory
-Clone the Jena project. (The command on the official website misses 'git clone'.)
-
-    git clone git://git.apache.org/jena.git
-Install
-
-    cd jena
-    mvn clean install
-    
-Then open a pack of chips and wait for the finish of installation. It takes about 50min on my PC. Some tests are performed along with the installation. Wish you guys good luck.
+### Deploy with Script
+    Run
+        bash deploy.sh
+    It will download requirements.
 
 ## The First Hands-on Attempt
 **TBD**
