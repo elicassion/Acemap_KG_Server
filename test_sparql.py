@@ -38,9 +38,12 @@ query = server + urllib.parse.urlencode(query)
 
 
 SEND_EACH = 20
+BEGIN = 10
+END = 150
+STEP = 10
 # for MULTI_COUNT in range(50, 1050, 50):
-f = open("%d_res.csv" % SEND_EACH, "w")
-for MULTI_COUNT in range(50, 1050, 50):
+f = open("%d_res_%d_%d_%d.csv" % (SEND_EACH, BEGIN, END, STEP), "w")
+for MULTI_COUNT in range(BEGIN, END, STEP):
     send_total = SEND_EACH * MULTI_COUNT
     fcount = 0
     sum_dur = 0
