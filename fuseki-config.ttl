@@ -1,0 +1,37 @@
+# Licensed under the terms of http://www.apache.org/licenses/LICENSE-2.0
+## Fuseki Server configuration file.
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tdb:     <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix :        <#> .
+[] rdf:type fuseki:Server ;
+	fuseki:services (  
+	     <#service_db>
+	   ) .  
+	# TDB  
+[] ja:loadClass "org.apache.jena.tdb.TDB" .  
+tdb:DatasetTDB  rdfs:subClassOf  ja:RDFDataset .  
+tdb:GraphTDB    rdfs:subClassOf  ja:Model .  
+  
+## ---------------------------------------------------------------  
+## Read-only TDB dataset (only read services enabled).  
+  
+<#service_db> rdf:type fuseki:Service ;  
+    fuseki:name                       "db" ;       # http://host:port/db
+    fuseki:serviceQuery               "sparql" ;   # SPARQL query service
+    fuseki:serviceQuery               "query" ;    # SPARQL query service (alt name)
+    fuseki:serviceUpdate              "update" ;   # SPARQL update service
+    fuseki:serviceUpload              "upload" ;   # Non-SPARQL upload service
+    fuseki:serviceReadWriteGraphStore "data" ;     # SPARQL Graph store protocol (read and write)
+    # A separate read-only graph store endpoint:
+    fuseki:serviceReadGraphStore      "get" ;      # SPARQL Graph store protocol (read only)
+    fuseki:dataset                   <#db> ;
+    .  
+  
+<#db> rdf:type      tdb:DatasetTDB ;  
+    tdb:location "tdb/db" ;  
+    # Query timeout on this dataset (1s, 1000 milliseconds)
+    ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
+    .  

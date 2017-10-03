@@ -11,13 +11,14 @@ Git
 ## Directory Explanation
 deploy.sh -> script to check the environment, download [Apache-Jena](http://jena.apache.org/) and [Apache-Jena-Fuseki](http://jena.apache.org/documentation/fuseki2/index.html) and unzip them.
 
-./db includes .ttl files, ready for being converted to TDB files.
-We already put an example.ttl in it.
+data/[database name] includes .ttl files, ready for being converted to TDB files.
+We already put an example.ttl in data/db.
 You can also create ANY directory as your base storing .ttl files on your machine.
 
-build_db.sh -d \[directory of your .ttl files\] -n \[database name\]-> build your TDB from .ttl files in /db.
--d is your directory containing .ttl files. It will be './db' by default.
+build_db.sh -d \[directory of your .ttl files\] -n \[database name\]-> build your TDB from .ttl files in the directory.
+-d is your directory containing .ttl files. It will be 'data/db' by default.
 -n is your name for this database. It will be used in SPARQL queries. 'db' by default.
+Database built form this will be put at tdb/\[database name\].
 
 run_service.sh run the Fuseki server on your machine. The root of APIs is http://localhost:3030 by default. 
 Specifically, APIs of your database are http://localhost:3030/\[database name\]/[query/update/data]

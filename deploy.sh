@@ -112,8 +112,8 @@ downloadComponent ${FUSEKI_FILE}
 
 # Unzip
 echo "Unziping File."
-JENA_DIR=apache-jena-${JENA_VERSION}
-FUSEKI_DIR=apache-jena-fuseki-${FUSEKI_VERSION}
+JENA_DIR="apache-jena"
+FUSEKI_DIR="apache-jena-fuseki"
 if [[ -d ${JENA_DIR} ]]; then
 	rm -r JENA_DIR > /dev/null 2>&1
 fi
@@ -121,18 +121,21 @@ if [[ -d ${FUSEKI_DIR} ]]; then
 	rm -r FUSEKI_DIR > /dev/null 2>&1
 fi
 tar -xzvf ${JENA_FILE} > /dev/null 2>&1
+mv apache-jena-${JENA_VERSION} ${JENA_DIR}
 tar -xzvf ${FUSEKI_FILE} > /dev/null 2>&1
+mv apache-jena-fuseki-${FUSEKI_VERSION} ${FUSEKI_DIR}
 echo "Unziping done."
 
 
 
 # Set
 export JENA_HOME=${DIR}/${JENA_DIR}
+PATH=$JENA_HOME/bin:$PATH
 # source /etc/profile
 if [[ $JENA_HOME ]]; then
-	echo "Jena environment has been successed set in /etc/profile."
+	echo "Jena environment has been successed set."
 else
-	echo "Setting Jena environment failed. Please use sudo deploy.sh"
+	echo "Setting Jena environment failed."
 fi
 
 
