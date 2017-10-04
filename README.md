@@ -21,7 +21,7 @@ build_db.sh -d \[directory of your .ttl files\] -n \[database name\]-> build you
 Database built form this will be put at tdb/\[database name\].
 
 run_service.sh run the Fuseki server on your machine. The root of APIs is http://localhost:3030 by default. 
-Specifically, APIs of your database are http://localhost:3030/\[database name\]/[query/update/data]
+Specifically, APIs of your database are http://localhost:3030/[database name]/[query/update/data]
 
 All is waiting for use!
 
