@@ -61,7 +61,18 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
     # Query timeout on this dataset (1s, 1000 milliseconds)
     ja:context [ ja:cxtName \"arq:queryTimeout\" ;  ja:cxtValue \"1000\" ] ;
     .  " > fuseki-config.ttl
+
+
 export FUSEKI_HOME="apache-jena-fuseki"
 export FUSEKI_BASE="fuseki-run"
+echo "[main]
+localhost=org.apache.jena.fuseki.authz.LocalhostFilter
+
+[urls]
+/$/status = anon
+/$/ping = anon
+/$/** = anon
+/** = anon
+" > $FUSEKI_BASE/shiro.ini
 # cd ${FUSEKI_DIR}
 ./$FUSEKI_HOME/fuseki-server --port 9030 --config=fuseki-config.ttl
