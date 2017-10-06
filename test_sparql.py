@@ -57,8 +57,7 @@ for MULTI_COUNT in range(BEGIN, END, STEP):
     for item in results:
         fcount += item[0]
         sum_dur += item[1]
-    print ("Send %d concurrently, \
-        Miss Rate: %.3f, Avr Return Time: %.3fms" % 
+    print ("Send %d concurrently, Miss Rate: %.3f, Avr Return Time: %.3fms" % 
         (MULTI_COUNT, fcount/send_total, sum_dur/send_total*1000))
     f.write("%d,%.3f,%.3f\n"%(MULTI_COUNT, fcount/send_total, sum_dur/send_total*1000))
     time.sleep(60)
